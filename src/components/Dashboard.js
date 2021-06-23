@@ -6,7 +6,7 @@ import TrackSearchResult from "./TrackSearchResult";
 import Player from "./Player";
 
 const spotifyApi = new SpotifyWebApi({
-  clientId: "e3c52dc073bb460cbabfabfdf10c4463",
+  clientId: process.env.REACT_APP_CLIENT_ID,
 });
 
 export default function Dashboard({ code }) {
