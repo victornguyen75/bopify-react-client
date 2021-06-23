@@ -12,12 +12,15 @@ export default function useAuth(code) {
         code,
       })
       .then((res) => {
-        console.log(res.data);
-        window.history.pushState({}, null, "/");
+        setAccessToken(res.data.accessToken)
+        setRefreshToken(res.data.refreshToken)
+        setExpiresIn(res.data.expiresIn)
+        window.history.pushState({}, null, "/")
       })
-      .catch((err) => {
-        // window.location = "/";
-        console.log(err);
-      });
-  }, [code]);
+      .catch(() => {
+        window.location = "/"
+      })
+  }, [code])
+
+  return accessToken;
 }
