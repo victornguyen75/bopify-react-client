@@ -12,15 +12,15 @@ export default function useAuth(code) {
         code,
       })
       .then((res) => {
-        setAccessToken(res.data.accessToken)
-        setRefreshToken(res.data.refreshToken)
-        setExpiresIn(res.data.expiresIn)
-        window.history.pushState({}, null, "/")
+        setAccessToken(res.data.accessToken);
+        setRefreshToken(res.data.refreshToken);
+        setExpiresIn(res.data.expiresIn);
+        window.history.pushState({}, null, "/");
       })
       .catch(() => {
-        window.location = "/"
-      })
-  }, [code])
+        window.location = "/";
+      });
+  }, [code]);
 
   useEffect(() => {
     if (!refreshToken || !expiresIn) return;
@@ -30,16 +30,16 @@ export default function useAuth(code) {
           refreshToken,
         })
         .then((res) => {
-          setAccessToken(res.data.accessToken)
-          setExpiresIn(res.data.expiresIn)
+          setAccessToken(res.data.accessToken);
+          setExpiresIn(res.data.expiresIn);
         })
         .catch(() => {
-          window.location = "/"
-        })
-      }, (expiresIn - 60) * 1000)
+          window.location = "/";
+        });
+    }, (expiresIn - 60) * 1000);
 
     return () => clearInterval(interval);
-  }, [refreshToken, expiresIn])
+  }, [refreshToken, expiresIn]);
 
   return accessToken;
 }
