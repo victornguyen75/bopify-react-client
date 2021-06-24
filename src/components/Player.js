@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { lightThemePlayer } from "./theme/lightTheme";
+import { darkThemePlayer } from "./theme/darkTheme";
 import SpotifyPlayer from "react-spotify-web-playback";
-export default function Player({ accessToken, trackUri }) {
+
+export default function Player({ accessToken, trackUri, theme }) {
   const [play, setPlay] = useState(false);
 
   useEffect(() => setPlay(true), [trackUri]);
@@ -9,6 +12,10 @@ export default function Player({ accessToken, trackUri }) {
 
   return (
     <SpotifyPlayer
+      key={theme.name}
+      styles={
+        theme.name === "dark" ? { ...darkThemePlayer } : { ...lightThemePlayer }
+      }
       token={accessToken}
       showSaveIcon
       uris={trackUri ? [trackUri] : []}
