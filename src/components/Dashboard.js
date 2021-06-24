@@ -78,9 +78,12 @@ export default function Dashboard({ code, theme, toggleTheme }) {
 
   return (
     <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
-      <ThemeToggler className="btn" theme={theme} onClick={toggleTheme}>
-        {theme.name === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-      </ThemeToggler>
+      <div className="d-flex">
+        <h1>Bopify</h1>
+        <ThemeToggler className="btn" theme={theme} onClick={toggleTheme}>
+          {theme.name === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+        </ThemeToggler>
+      </div>
       <Form.Control
         id="searchBar"
         type="search"
