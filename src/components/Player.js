@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import SpotifyPlayer from "react-spotify-web-playback";
+
 import { lightThemePlayer } from "./theme/lightTheme";
 import { darkThemePlayer } from "./theme/darkTheme";
-import SpotifyPlayer from "react-spotify-web-playback";
 
 export default function Player({ accessToken, trackUri, theme }) {
   const [play, setPlay] = useState(false);

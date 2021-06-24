@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import useAuth from "./useAuth";
+import { Container, Form } from "react-bootstrap";
 import LightModeIcon from "@material-ui/icons/Brightness5";
 import DarkModeIcon from "@material-ui/icons/Brightness4";
-import { Container, Form } from "react-bootstrap";
-import SpotifyWebApi from "spotify-web-api-node";
-import TrackSearchResult from "./TrackSearchResult";
-import Player from "./Player";
 import axios from "axios";
+import SpotifyWebApi from "spotify-web-api-node";
+
+import useAuth from "./useAuth";
+import Player from "./Player";
+import TrackSearchResult from "./TrackSearchResult";
 import { ThemeToggler, SearchResults, Lyrics } from "./Dashboard.styled";
 
 const spotifyApi = new SpotifyWebApi({

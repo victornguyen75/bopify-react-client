@@ -1,10 +1,11 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import { ThemeContext } from "./components/ThemeProvider";
-import GlobalStyles from "./components/theme/GlobalStyles";
 import { Fragment } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
+import GlobalStyles from "./components/theme/GlobalStyles";
+import { ThemeContext } from "./components/ThemeProvider";
+import "./App.css";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
