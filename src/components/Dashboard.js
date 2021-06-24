@@ -7,6 +7,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
 import Player from "./Player";
 import axios from "axios";
+import { ThemeToggler, SearchResults, Lyrics } from "./Dashboard.styled";
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.REACT_APP_CLIENT_ID,
@@ -76,24 +77,17 @@ export default function Dashboard({ code, theme, toggleTheme }) {
 
   return (
     <Container className="d-flex flex-column py-2" style={{ height: "100vh" }}>
-      <button
-        className="btn"
-        style={{
-          marginLeft: "auto",
-          marginBottom: "2rem",
-          background: theme.btnBackground,
-        }}
-        onClick={toggleTheme}
-      >
+      <ThemeToggler className="btn" theme={theme} onClick={toggleTheme}>
         {theme.name === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
-      </button>
+      </ThemeToggler>
       <Form.Control
+        id="searchBar"
         type="search"
         placeholder="Search Songs/Artists"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
+      <SearchResults id="searchResults" className="flex-grow-1 my-2">
         {searchResults.map((track) => (
           <TrackSearchResult
             key={track.uri}
@@ -102,11 +96,11 @@ export default function Dashboard({ code, theme, toggleTheme }) {
           />
         ))}
         {searchResults.length === 0 && (
-          <div className="text-center" style={{ whiteSpace: "pre" }}>
+          <Lyrics id="lyrics" className="text-center">
             {lyrics}
-          </div>
+          </Lyrics>
         )}
-      </div>
+      </SearchResults>
       <div>
         <Player
           accessToken={accessToken}
