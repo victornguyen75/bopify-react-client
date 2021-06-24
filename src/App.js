@@ -8,7 +8,7 @@ import Dashboard from "./components/Dashboard";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
-function App() {
+export default function App() {
   return (
     <ThemeContext.Consumer>
       {(context) => (
@@ -28,5 +28,3 @@ function App() {
     </ThemeContext.Consumer>
   );
 }
-
-export default App;
